@@ -1,0 +1,21 @@
+# Robots.txt - Taxi Santa Marta
+# https://taxisantamarta.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://taxisantamarta.com/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1
+
+# Block specific bots if needed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /

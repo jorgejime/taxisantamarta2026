@@ -1,51 +1,70 @@
 import React from 'react';
-import { Apple, Play, MessageCircle } from 'lucide-react';
+import { Apple, Play, MessageCircle, ArrowRight } from 'lucide-react';
+import { useLanguage } from '../i18n';
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
-    <div className="relative w-full h-[600px] md:h-[700px] bg-gray-900 overflow-hidden">
-      {/* Background Image - Using a placeholder similar to a colonial street in Colombia */}
-      <img
-        src="https://i.ibb.co/DDC69Njt/Gemini-Generated-Image-1ii1lj1ii1lj1ii1.png"
-        alt="Taxi on Santa Marta street"
-        className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
-      />
-      
-      {/* Dark Overlay gradient for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+    <div className="relative w-full bg-white border-b-2 border-black overflow-hidden">
+      <div className="max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 min-h-[80vh]">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
-        <div className="max-w-2xl text-white pt-10">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-            Tu transporte confiable <br />
-            en Santa Marta
-          </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-lg font-light">
-            Seguridad, puntualidad y profesionalismo en cada viaje por Colombia.
-          </p>
+          {/* Main Content Area */}
+          <div className="md:col-span-8 p-6 md:p-16 flex flex-col justify-center border-black md:border-r-2 order-2 md:order-1">
+            <h1 className="mb-8 max-w-4xl">
+              {t.hero.title}<br />
+              <span className="text-[#FFD700] stroke-black" style={{ WebkitTextStroke: '2px black' }}>
+                {t.hero.titleHighlight}
+              </span>
+            </h1>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-start">
-            {/* App Store Buttons Box */}
-            <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center min-w-[200px] shadow-lg">
-              <span className="text-gray-900 font-bold mb-3 text-sm">Descarga la App</span>
-              <div className="flex gap-4">
-                <button className="text-black hover:text-gray-700 transition-colors">
-                   <Apple className="w-8 h-8 md:w-10 md:h-10 fill-current" />
-                </button>
-                <button className="text-black hover:text-gray-700 transition-colors">
-                   <Play className="w-8 h-8 md:w-10 md:h-10 fill-current" />
-                </button>
+            <p className="text-xl md:text-3xl font-medium tracking-tight text-black mb-12 max-w-2xl leading-tight uppercase font-black">
+              {t.hero.subtitle}
+            </p>
+
+            <div className="flex flex-col gap-4">
+              <a
+                href="https://wa.me/573182000081"
+                className="group inline-flex items-center justify-between bg-black text-white p-6 md:p-8 text-xl md:text-3xl font-black uppercase tracking-tighter hover:bg-[#FFD700] hover:text-black transition-all"
+              >
+                <span>{t.hero.bookWhatsApp}</span>
+                <MessageCircle className="w-8 h-8 md:w-12 md:h-12 group-hover:rotate-12 transition-transform" />
+              </a>
+
+              <div className="grid grid-cols-2 gap-4">
+                <a
+                  href="https://apps.apple.com/co/app/taxi-santa-marta/id1609494308"
+                  className="flex flex-col items-center justify-center border-2 border-black p-4 hover:bg-gray-100 transition-colors"
+                >
+                  <Apple className="w-8 h-8 mb-2" />
+                  <span className="text-[10px] font-black uppercase tracking-widest">iOS</span>
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.taxisantamarta4340000.santamarta"
+                  className="flex flex-col items-center justify-center border-2 border-black p-4 hover:bg-gray-100 transition-colors"
+                >
+                  <Play className="w-8 h-8 mb-2" />
+                  <span className="text-[10px] font-black uppercase tracking-widest">Android</span>
+                </a>
               </div>
             </div>
+          </div>
 
-            {/* WhatsApp Box */}
-            <div className="bg-white rounded-xl p-4 flex flex-col items-center justify-center min-w-[200px] shadow-lg">
-              <span className="text-gray-900 font-bold mb-3 text-sm">Reserva por WhatsApp</span>
-              <button className="bg-gray-900 text-white rounded-full p-2 hover:bg-gray-700 transition-colors">
-                 <MessageCircle className="w-6 h-6 md:w-8 md:h-8" />
-              </button>
+          {/* Graphical/Image Area */}
+          <div className="md:col-span-4 bg-gray-100 relative min-h-[300px] md:min-h-full border-b-2 md:border-b-0 border-black order-1 md:order-2">
+            <img
+              src="https://i.ibb.co/DDC69Njt/Gemini-Generated-Image-1ii1lj1ii1lj1ii1.png"
+              alt="Taxi Santa Marta"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute top-0 right-0 p-4">
+              <div className="bg-[#FFD700] text-black font-black p-2 text-sm uppercase tracking-tighter border-2 border-black">
+                SMR-2026
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>

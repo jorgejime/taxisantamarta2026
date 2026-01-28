@@ -1,117 +1,128 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CheckCircle, FileText, Car } from 'lucide-react';
+import { useLanguage } from '../i18n';
 
 const JoinTeam: React.FC = () => {
+  const { t, language } = useLanguage();
+
+  const [formData, setFormData] = useState({
+    nombre: '',
+    cedula: '',
+    celular: '',
+    placa: '',
+    modelo: '',
+    experiencia: t.joinTeam.form.experienceOptions[0]
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const labelName = language === 'es' ? 'Nombre' : 'Name';
+    const labelId = language === 'es' ? 'Cédula' : 'ID';
+    const labelPhone = language === 'es' ? 'Celular' : 'Phone';
+    const labelPlate = language === 'es' ? 'Placa' : 'Plate';
+    const labelModel = language === 'es' ? 'Modelo' : 'Model';
+    const labelExp = language === 'es' ? 'Experiencia' : 'Experience';
+    const title = language === 'es' ? '🚕 *NUEVA SOLICITUD DE CONDUCTOR*' : '🚕 *NEW DRIVER APPLICATION*';
+
+    const mensaje = `${title}\n\n👤 *${labelName}:* ${formData.nombre}\n🆔 *${labelId}:* ${formData.cedula}\n📱 *${labelPhone}:* ${formData.celular}\n🚗 *${labelPlate}:* ${formData.placa}\n📅 *${labelModel}:* ${formData.modelo}\n⏱️ *${labelExp}:* ${formData.experiencia}`;
+    window.open(`https://wa.me/573184131391?text=${encodeURIComponent(mensaje)}`, '_blank');
+  };
+
   return (
-    <div className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-            Afíliate a Taxi Santa Marta
+    <div className="bg-white">
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12">
+
+        {/* Left Info Area */}
+        <div className="lg:col-span-5 p-10 md:p-20 border-black lg:border-r-2 border-b-2 lg:border-b-0">
+          <h2 className="mb-12 leading-[0.85]">{t.joinTeam.title}</h2>
+          <div className="border-t-8 border-black w-32 mb-12" />
+
+          <div className="space-y-16">
+            <section>
+              <h3 className="mb-8 flex items-center gap-4">
+                <FileText strokeWidth={3} /> {t.joinTeam.requirements}
+              </h3>
+              <ul className="grid grid-cols-1 gap-4">
+                {t.joinTeam.reqList.map((req, i) => (
+                  <li key={i} className="flex items-center gap-4 p-4 bg-gray-100 font-bold uppercase text-xs tracking-tighter">
+                    <CheckCircle className="text-black" size={16} strokeWidth={4} />
+                    {req}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="mb-8 flex items-center gap-4">
+                <Car strokeWidth={3} /> {t.joinTeam.benefits}
+              </h3>
+              <div className="grid grid-cols-1 gap-2">
+                {Object.values(t.joinTeam.benefitCards).map((benefit: any, i) => (
+                  <div key={i} className="border-2 border-black p-6 hover:bg-[#FFD700] transition-colors">
+                    <h4 className="font-black uppercase text-xl mb-1">{benefit.title}</h4>
+                    <p className="font-bold uppercase text-[10px] tracking-widest opacity-60">{benefit.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+
+        {/* Right Form Area */}
+        <div className="lg:col-span-7 bg-black text-white p-10 md:p-20">
+          <h2 className="text-white mb-16 underline decoration-[#FFD700] decoration-8 underline-offset-8">
+            {t.joinTeam.form.title}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Únete a la flota más confiable de la ciudad. Aumenta tus ingresos con nuestra alta demanda de servicios turísticos y ejecutivos.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          
-          {/* Requirements & Benefits */}
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <FileText className="text-[#FFD700]" /> Requisitos de Afiliación
-            </h3>
-            <ul className="space-y-4 mb-10">
-              {[
-                'Licencia de conducción C1 o C2 vigente.',
-                'Tarjeta de propiedad del vehículo.',
-                'SOAT y revisión técnico-mecánica al día.',
-                'Tarjeta de operación vigente.',
-                'Vehículo modelo 2018 en adelante (preferiblemente con A/C).',
-                'Antecedentes judiciales y disciplinarios.',
-                'Seguridad social (ARL, EPS, Pensión).'
-              ].map((req, i) => (
-                <li key={i} className="flex items-start gap-3 text-gray-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span>{req}</span>
-                </li>
-              ))}
-            </ul>
-
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Car className="text-[#FFD700]" /> Beneficios
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-400">
-                <h4 className="font-bold text-gray-900">Más Carreras</h4>
-                <p className="text-sm text-gray-600">Acceso a convenios con hoteles y empresas.</p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-400">
-                <h4 className="font-bold text-gray-900">Seguridad</h4>
-                <p className="text-sm text-gray-600">Monitoreo 24/7 y botón de pánico en la app.</p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-400">
-                <h4 className="font-bold text-gray-900">Pagos Puntuales</h4>
-                <p className="text-sm text-gray-600">Liquidación semanal de servicios corporativos.</p>
-              </div>
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-10" onSubmit={handleSubmit}>
+            <div className="flex flex-col border-b-2 border-gray-700 focus-within:border-[#FFD700] transition-colors">
+              <label className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{t.joinTeam.form.name}</label>
+              <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} required className="bg-transparent text-2xl font-black uppercase tracking-tighter outline-none py-2" placeholder="..." />
             </div>
-          </div>
 
-          {/* Form */}
-          <div className="bg-gray-900 p-8 rounded-2xl shadow-2xl text-white">
-            <h3 className="text-2xl font-bold mb-6">Pre-Inscripción</h3>
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Nombre</label>
-                  <input type="text" className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-white" placeholder="Juan Pérez" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Cédula</label>
-                  <input type="text" className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-white" placeholder="123456789" />
-                </div>
-              </div>
+            <div className="flex flex-col border-b-2 border-gray-700 focus-within:border-[#FFD700] transition-colors">
+              <label className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{t.joinTeam.form.idNumber}</label>
+              <input type="text" name="cedula" value={formData.cedula} onChange={handleChange} required className="bg-transparent text-2xl font-black uppercase tracking-tighter outline-none py-2" placeholder="..." />
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Celular / WhatsApp</label>
-                <input type="tel" className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-white" placeholder="300 123 4567" />
-              </div>
+            <div className="md:col-span-2 flex flex-col border-b-2 border-gray-700 focus-within:border-[#FFD700] transition-colors">
+              <label className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{t.joinTeam.form.phone}</label>
+              <input type="tel" name="celular" value={formData.celular} onChange={handleChange} required className="bg-transparent text-2xl font-black uppercase tracking-tighter outline-none py-2" placeholder="300 000 0000" />
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Placa del Vehículo</label>
-                  <input type="text" className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-white uppercase" placeholder="ABC-123" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Modelo (Año)</label>
-                  <input type="number" className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-white" placeholder="2020" />
-                </div>
-              </div>
+            <div className="flex flex-col border-b-2 border-gray-700 focus-within:border-[#FFD700] transition-colors">
+              <label className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{t.joinTeam.form.plate}</label>
+              <input type="text" name="placa" value={formData.placa} onChange={handleChange} required className="bg-transparent text-2xl font-black uppercase tracking-tighter outline-none py-2" placeholder="ABC-123" />
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Experiencia (Años)</label>
-                <select className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] text-white">
-                  <option>Menos de 1 año</option>
-                  <option>1 - 3 años</option>
-                  <option>3 - 5 años</option>
-                  <option>Más de 5 años</option>
-                </select>
-              </div>
+            <div className="flex flex-col border-b-2 border-gray-700 focus-within:border-[#FFD700] transition-colors">
+              <label className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{t.joinTeam.form.model}</label>
+              <input type="number" name="modelo" value={formData.modelo} onChange={handleChange} required className="bg-transparent text-2xl font-black uppercase tracking-tighter outline-none py-2" placeholder="2024" />
+            </div>
 
-              <div className="pt-4">
-                <button type="submit" className="w-full bg-[#FFD700] hover:bg-yellow-400 text-black font-bold py-3.5 rounded-lg transition-colors shadow-lg">
-                  Enviar Solicitud
-                </button>
-                <p className="text-xs text-gray-400 mt-3 text-center">
-                  Nos pondremos en contacto contigo en las próximas 24 horas para agendar la revisión.
-                </p>
-              </div>
-            </form>
-          </div>
+            <div className="md:col-span-2 flex flex-col border-b-2 border-gray-700 focus-within:border-[#FFD700] transition-colors">
+              <label className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{t.joinTeam.form.experience}</label>
+              <select name="experiencia" value={formData.experiencia} onChange={handleChange} className="bg-transparent text-2xl font-black uppercase tracking-tighter outline-none py-2 cursor-pointer">
+                {t.joinTeam.form.experienceOptions.map((opt, i) => <option key={i} className="bg-black text-white">{opt}</option>)}
+              </select>
+            </div>
 
+            <div className="md:col-span-2 pt-10">
+              <button type="submit" className="w-full bg-[#FFD700] text-black h-24 text-3xl font-black uppercase tracking-tighter hover:bg-white transition-all">
+                {t.joinTeam.form.submit}
+              </button>
+              <p className="mt-6 text-xs font-bold uppercase tracking-widest text-gray-500 text-center">
+                {t.joinTeam.form.note}
+              </p>
+            </div>
+          </form>
         </div>
+
       </div>
     </div>
   );

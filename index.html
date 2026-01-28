@@ -1,29 +1,388 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Taxi Santa Marta - Transporte Confiable</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
+
+<head>
+  <!-- Essential Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary SEO Meta Tags -->
+  <title>Taxi Santa Marta | Transporte Confiable, Turismo y Traslados Aeropuerto</title>
+  <meta name="title" content="Taxi Santa Marta | Transporte Confiable, Turismo y Traslados Aeropuerto" />
+  <meta name="description"
+    content="Servicio de taxi seguro y confiable en Santa Marta, Colombia. Traslados al aeropuerto, tours a Tayrona, Minca, Taganga. Conductores verificados, tarifas fijas. Reserva por WhatsApp." />
+  <meta name="keywords"
+    content="taxi santa marta, transporte santa marta, taxi aeropuerto santa marta, tour tayrona, taxi minca, taxi taganga, transporte turistico santa marta, taxi colombia, servicio taxi, traslados aeropuerto" />
+  <meta name="author" content="Taxi Santa Marta" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="Spanish, English" />
+  <meta name="revisit-after" content="7 days" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://taxisantamarta.com/" />
+
+  <!-- Alternate Languages -->
+  <link rel="alternate" hreflang="es" href="https://taxisantamarta.com/" />
+  <link rel="alternate" hreflang="en" href="https://taxisantamarta.com/?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://taxisantamarta.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://taxisantamarta.com/" />
+  <meta property="og:title" content="Taxi Santa Marta | Transporte Confiable en Colombia" />
+  <meta property="og:description"
+    content="Servicio de taxi seguro en Santa Marta. Traslados aeropuerto, tours turísticos a Tayrona, Minca, Taganga. Reserva fácil por WhatsApp." />
+  <meta property="og:image" content="https://taxisantamarta.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Taxi Santa Marta - Servicio de transporte confiable" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="Taxi Santa Marta" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://taxisantamarta.com/" />
+  <meta name="twitter:title" content="Taxi Santa Marta | Transporte Confiable en Colombia" />
+  <meta name="twitter:description"
+    content="Servicio de taxi seguro en Santa Marta. Traslados aeropuerto, tours turísticos a Tayrona, Minca, Taganga. Reserva por WhatsApp." />
+  <meta name="twitter:image" content="https://taxisantamarta.com/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Taxi Santa Marta - Servicio de transporte" />
+
+  <!-- Geographic Meta Tags (Local SEO) -->
+  <meta name="geo.region" content="CO-MAG" />
+  <meta name="geo.placename" content="Santa Marta, Magdalena, Colombia" />
+  <meta name="geo.position" content="11.2408;-74.1990" />
+  <meta name="ICBM" content="11.2408, -74.1990" />
+
+  <!-- Theme & Branding -->
+  <meta name="theme-color" content="#FFD700" />
+  <meta name="msapplication-TileColor" content="#FFD700" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Taxi Santa Marta" />
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+
+  <!-- DNS Prefetch -->
+  <link rel="dns-prefetch" href="https://wa.me" />
+  <link rel="dns-prefetch" href="https://i.ibb.co" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Structured Data - Local Business (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TaxiService",
+      "name": "Taxi Santa Marta",
+      "description": "Servicio de taxi seguro y confiable en Santa Marta, Colombia. Traslados aeropuerto, tours turísticos, transporte ejecutivo.",
+      "url": "https://taxisantamarta.com",
+      "telephone": "+573182000081",
+      "email": "contacto@taxisantamarta.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santa Marta",
+        "addressRegion": "Magdalena",
+        "addressCountry": "CO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "11.2408",
+        "longitude": "-74.1990"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Santa Marta"
+        },
+        {
+          "@type": "Place",
+          "name": "Parque Tayrona"
+        },
+        {
+          "@type": "Place",
+          "name": "Minca"
+        },
+        {
+          "@type": "Place",
+          "name": "Taganga"
+        },
+        {
+          "@type": "Place",
+          "name": "Aeropuerto Simón Bolívar"
+        }
+      ],
+      "priceRange": "$$",
+      "paymentAccepted": ["Cash", "Credit Card", "Nequi", "Daviplata"],
+      "currenciesAccepted": "COP",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": [
+        "https://www.facebook.com/taxisantamarta",
+        "https://www.instagram.com/taxisantamarta"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Transporte",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Traslado Aeropuerto - Rodadero",
+              "description": "Transporte desde/hacia el Aeropuerto Simón Bolívar"
+            },
+            "price": "30000",
+            "priceCurrency": "COP"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Tour Parque Tayrona",
+              "description": "Transporte turístico al Parque Nacional Tayrona"
+            },
+            "price": "90000",
+            "priceCurrency": "COP"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Tour Minca",
+              "description": "Transporte turístico a Minca"
+            },
+            "price": "60000",
+            "priceCurrency": "COP"
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1250"
       }
-    </style>
+    }
+    </script>
+
+  <!-- Structured Data - Website -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Taxi Santa Marta",
+      "url": "https://taxisantamarta.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://taxisantamarta.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+  <!-- Structured Data - Organization -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Taxi Santa Marta",
+      "url": "https://taxisantamarta.com",
+      "logo": "https://taxisantamarta.com/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+573182000081",
+        "contactType": "customer service",
+        "availableLanguage": ["Spanish", "English"],
+        "areaServed": "CO"
+      }
+    }
+    </script>
+
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://taxisantamarta.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Servicios",
+          "item": "https://taxisantamarta.com/#servicios"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tarifas",
+          "item": "https://taxisantamarta.com/#tarifas"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Soy Conductor",
+          "item": "https://taxisantamarta.com/#conductores"
+        }
+      ]
+    }
+    </script>
+
+  <!-- Structured Data - FAQPage -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta un taxi del aeropuerto al Rodadero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El traslado desde el Aeropuerto Simón Bolívar hasta El Rodadero tiene un costo aproximado de $30,000 COP. Los precios pueden variar en temporada alta o con recargo nocturno."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo puedo reservar un taxi en Santa Marta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puede reservar fácilmente a través de WhatsApp al número +57 318 200 0081, o descargando nuestra aplicación móvil disponible en App Store y Google Play."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Ofrecen tours turísticos al Parque Tayrona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, ofrecemos transporte turístico al Parque Nacional Tayrona por $90,000 COP. Nuestros conductores conocen los mejores lugares y pueden darte recomendaciones."
+          }
+        }
+      ]
+    }
+    </script>
+
+  <!-- Import Maps for ES Modules -->
   <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
-  }
-}
-</script>
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4",
+        "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+      }
+    }
+    </script>
+
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --swiss-red: #E61D2B;
+      --swiss-black: #1A1A1B;
+      --swiss-gray: #F4F4F5;
+      --taxi-yellow: #FFD700;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: white;
+      color: var(--swiss-black);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.25;
+    }
+
+    /* Swiss Grid Essentials */
+    .swiss-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Typographic Scale */
+    h1 {
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Selection color */
+    ::selection {
+      background-color: var(--swiss-black);
+      color: white;
+    }
+  </style>
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+
+<body>
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-400 text-black px-4 py-2 rounded-md font-bold z-[100]">
+    Saltar al contenido principal
+  </a>
+
+  <!-- Main App Container -->
+  <div id="root"></div>
+
+  <!-- App Entry Point -->
+  <script type="module" src="/index.tsx"></script>
+
+  <!-- Noscript fallback -->
+  <noscript>
+    <div style="padding: 20px; text-align: center; font-family: sans-serif;">
+      <h1>Taxi Santa Marta</h1>
+      <p>Para usar esta aplicación, por favor habilita JavaScript en tu navegador.</p>
+      <p>Para reservar un taxi, llama o escribe por WhatsApp al: <a href="tel:+573182000081">+57 318 200 0081</a></p>
+    </div>
+  </noscript>
+</body>
+
 </html>

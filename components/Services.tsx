@@ -1,64 +1,61 @@
 import React from 'react';
 import { Plane, Briefcase, Camera, Clock, UserCheck, Shield } from 'lucide-react';
+import { useLanguage } from '../i18n';
+
+interface ServiceItem {
+  icon: any;
+  key: 'airport' | 'tourism' | 'executive' | 'hourly' | 'designated' | 'delivery';
+}
+
+const servicesList: ServiceItem[] = [
+  { icon: Plane, key: 'airport' },
+  { icon: Camera, key: 'tourism' },
+  { icon: Briefcase, key: 'executive' },
+  { icon: Clock, key: 'hourly' },
+  { icon: UserCheck, key: 'designated' },
+  { icon: Shield, key: 'delivery' },
+];
 
 const Services: React.FC = () => {
-  const serviceList = [
-    {
-      icon: Plane,
-      title: 'Traslados Aeropuerto',
-      desc: 'Te recogemos o llevamos al Aeropuerto Simón Bolívar con puntualidad garantizada. Monitoreamos tu vuelo.',
-    },
-    {
-      icon: Camera,
-      title: 'Turismo Local',
-      desc: 'Recorridos por Taganga, Minca, Parque Tayrona y alrededores. Conductores que conocen los mejores sitios.',
-    },
-    {
-      icon: Briefcase,
-      title: 'Transporte Ejecutivo',
-      desc: 'Servicio discreto y vehículos confortables para reuniones de negocios, congresos y eventos corporativos.',
-    },
-    {
-      icon: Clock,
-      title: 'Servicio por Horas',
-      desc: 'Disponibilidad total del vehículo y conductor para diligencias múltiples dentro de la ciudad.',
-    },
-    {
-      icon: UserCheck,
-      title: 'Conductor Elegido',
-      desc: 'Disfruta de la fiesta sin preocupaciones. Un conductor profesional te llevará a casa en tu propio vehículo.',
-    },
-    {
-      icon: Shield,
-      title: 'Encomiendas Seguras',
-      desc: 'Transporte de documentos y paquetes pequeños con seguimiento en tiempo real.',
-    },
-  ];
+  const { t } = useLanguage();
 
   return (
-    <div className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-            Más que un simple taxi
+    <div className="bg-[#1A1A1B] text-white border-b-2 border-black">
+      <div className="max-w-[1440px] mx-auto">
+        <div className="p-10 md:p-20 border-black border-b-2">
+          <h2 className="text-white mb-6">
+            {t.services.title}
           </h2>
-          <p className="text-lg text-gray-600">
-            Adaptamos nuestro servicio a tus necesidades, ya sea que visites Santa Marta por placer o negocios.
+          <p className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-gray-400 max-w-4xl">
+            {t.services.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {serviceList.map((service, index) => (
-            <div key={index} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-              <div className="w-12 h-12 bg-[#FFD700] rounded-lg flex items-center justify-center mb-6">
-                <service.icon className="w-6 h-6 text-black" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {servicesList.map((service, index) => {
+            const serviceData = t.services[service.key];
+            return (
+              <div
+                key={index}
+                className="p-10 md:p-12 border-black border-b-2 sm:odd:border-r-2 lg:odd:border-r-0 lg:[&:not(:nth-child(3n))]:border-r-2 hover:bg-[#FFD700] hover:text-black transition-all group cursor-default"
+              >
+                <div className="flex justify-between items-start mb-12">
+                  <div className="p-3 bg-white text-black font-black text-xl">
+                    {index + 1 < 10 ? `0${index + 1}` : index + 1}
+                  </div>
+                  <service.icon className="w-8 h-8 opacity-40 group-hover:opacity-100 group-hover:scale-125 transition-all" />
+                </div>
+
+                <h3 className="text-3xl font-black uppercase tracking-tighter mb-4 leading-none">
+                  {serviceData.title}
+                </h3>
+
+                <p className="text-sm font-medium uppercase tracking-tight opacity-60 group-hover:opacity-100 leading-tight">
+                  {serviceData.desc}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-              <p className="text-gray-600 leading-relaxed">
-                {service.desc}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

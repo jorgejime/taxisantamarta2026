@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
-import CookieConsent from './components/CookieConsent';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
 import Services from './components/Services';
 import Rates from './components/Rates';
 import JoinTeam from './components/JoinTeam';
+import SEOHead from './components/SEOHead';
 import { PageType } from './types';
+import { LanguageProvider } from './i18n';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
@@ -39,16 +40,19 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-900 selection:bg-yellow-200">
-      <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main>
-        {renderContent()}
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <CookieConsent />
-    </div>
+    <LanguageProvider>
+      <SEOHead />
+      <div className="min-h-screen bg-gray-50 font-sans text-gray-900 selection:bg-yellow-200">
+        <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
+        <main id="main-content" role="main">
+          {renderContent()}
+        </main>
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    </LanguageProvider>
   );
 }
 
 export default App;
+

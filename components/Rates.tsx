@@ -1,69 +1,65 @@
 import React from 'react';
-import { MapPin, ArrowRight, Info } from 'lucide-react';
+import { MapPin, Info } from 'lucide-react';
+import { useLanguage } from '../i18n';
 
-const rates = [
-  { route: 'Aeropuerto - Rodadero', price: '$30,000 COP', type: 'Estándar' },
-  { route: 'Aeropuerto - Centro Histórico', price: '$35,000 COP', type: 'Estándar' },
-  { route: 'Aeropuerto - Taganga', price: '$45,000 COP', type: 'Estándar' },
-  { route: 'Santa Marta - Minca', price: '$60,000 COP', type: 'Turismo' },
-  { route: 'Santa Marta - Parque Tayrona', price: '$90,000 COP', type: 'Turismo' },
-  { route: 'Santa Marta - Palomino', price: '$180,000 COP', type: 'Full Day' },
-  { route: 'Servicio por Hora (Ciudad)', price: '$25,000 COP', type: 'Ejecutivo' },
+interface RateItem {
+  routeKey: 'airportRodadero' | 'airportCentro' | 'airportTaganga' | 'santaMartaMinca' | 'santaMartaTayrona' | 'santaMartaPalomino' | 'hourlyCity';
+  price: string;
+  typeKey: 'standard' | 'tourism' | 'fullDay' | 'executive';
+}
+
+const ratesList: RateItem[] = [
+  { routeKey: 'airportRodadero', price: '$30.000', typeKey: 'standard' },
+  { routeKey: 'airportCentro', price: '$35.000', typeKey: 'standard' },
+  { routeKey: 'airportTaganga', price: '$45.000', typeKey: 'standard' },
+  { routeKey: 'santaMartaMinca', price: '$60.000', typeKey: 'tourism' },
+  { routeKey: 'santaMartaTayrona', price: '$90.000', typeKey: 'tourism' },
+  { routeKey: 'santaMartaPalomino', price: '$180.000', typeKey: 'fullDay' },
+  { routeKey: 'hourlyCity', price: '$25.000', typeKey: 'executive' },
 ];
 
 const Rates: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
-    <div className="py-16 bg-white min-h-[80vh]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-            Tarifas Oficiales
-          </h2>
-          <p className="text-lg text-gray-600">
-            Precios transparentes y regulados para 2024. Sin sorpresas.
+    <div className="bg-white border-b-2 border-black min-h-screen">
+      <div className="max-w-[1440px] mx-auto">
+        <div className="p-10 md:p-20 border-b-2 border-black grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+          <div>
+            <h2 className="mb-4">{t.rates.title}</h2>
+            <div className="border-t-8 border-black w-24 mb-4" />
+          </div>
+          <p className="text-xl md:text-3xl font-black uppercase tracking-tighter leading-none text-gray-400">
+            {t.rates.subtitle}
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-gray-900 text-white">
-                  <th className="py-4 px-6 font-semibold text-sm uppercase tracking-wider">Ruta / Servicio</th>
-                  <th className="py-4 px-6 font-semibold text-sm uppercase tracking-wider">Tipo</th>
-                  <th className="py-4 px-6 font-semibold text-sm uppercase tracking-wider text-right">Valor Aproximado</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {rates.map((rate, index) => (
-                  <tr key={index} className="hover:bg-yellow-50 transition-colors">
-                    <td className="py-4 px-6 flex items-center gap-2 text-gray-800 font-medium">
-                      <MapPin className="w-4 h-4 text-gray-400" />
-                      {rate.route}
-                    </td>
-                    <td className="py-4 px-6">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        rate.type === 'Turismo' ? 'bg-green-100 text-green-800' :
-                        rate.type === 'Ejecutivo' ? 'bg-purple-100 text-purple-800' :
-                        'bg-gray-100 text-gray-800'
-                      }`}>
-                        {rate.type}
-                      </span>
-                    </td>
-                    <td className="py-4 px-6 text-right font-bold text-gray-900 text-lg">
-                      {rate.price}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="bg-yellow-50 p-4 flex items-start gap-3">
-             <Info className="w-5 h-5 text-yellow-700 flex-shrink-0 mt-0.5" />
-             <p className="text-sm text-yellow-800">
-               * Tarifas sujetas a cambios por temporada alta, recargo nocturno (8pm - 5am) y festivos. Para viajes fuera del perímetro urbano, acuerde el precio con el conductor o use el taxímetro.
-             </p>
-          </div>
+        <div className="grid grid-cols-1">
+          {ratesList.map((rate, index) => (
+            <div
+              key={index}
+              className="group flex flex-col md:flex-row justify-between items-start md:items-center p-8 md:px-16 border-b-2 border-black hover:bg-black hover:text-white transition-all transition-duration-300"
+            >
+              <div className="flex items-center gap-4 mb-4 md:mb-0">
+                <span className="text-xs font-black p-1 border-2 border-black group-hover:border-white uppercase">
+                  {t.rates.types[rate.typeKey]}
+                </span>
+                <span className="text-2xl md:text-4xl font-black uppercase tracking-tighter">
+                  {t.rates.routes[rate.routeKey]}
+                </span>
+              </div>
+              <div className="text-4xl md:text-7xl font-black tracking-tighter">
+                {rate.price} <span className="text-xs md:text-sm align-middle tracking-normal">COP</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="p-10 bg-[#FFD700] border-t-2 border-black flex flex-col md:flex-row gap-6 items-center">
+          <Info className="w-12 h-12 flex-shrink-0" strokeWidth={3} />
+          <p className="text-sm md:text-xl font-black uppercase tracking-tight leading-tight">
+            {t.rates.note}
+          </p>
         </div>
       </div>
     </div>

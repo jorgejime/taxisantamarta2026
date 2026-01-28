@@ -1,96 +1,123 @@
 import React, { useState } from 'react';
-import { Menu, X, Smartphone } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { NavItem, PageType } from '../types';
+import { useLanguage } from '../i18n';
 
 interface NavbarProps {
   currentPage: PageType;
   onNavigate: (page: PageType) => void;
 }
 
-const navItems: NavItem[] = [
-  { id: 'home', label: 'Inicio' },
-  { id: 'services', label: 'Servicios' },
-  { id: 'rates', label: 'Tarifas' },
-  { id: 'drivers', label: 'Soy Conductor' },
-];
-
 const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+
+  const navItems: NavItem[] = [
+    { id: 'home', label: t.nav.home },
+    { id: 'services', label: t.nav.services },
+    { id: 'rates', label: t.nav.rates },
+    { id: 'drivers', label: t.nav.drivers },
+  ];
 
   const handleNavClick = (page: PageType) => {
     onNavigate(page);
     setIsOpen(false);
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'es' ? 'en' : 'es');
+  };
+
   return (
-    <nav className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
+    <nav className="bg-white border-b-2 border-black sticky top-0 z-50">
+      <div className="max-w-[1440px] mx-auto px-6">
+        <div className="flex justify-between h-16 md:h-24 items-center">
+
           {/* Logo Section */}
-          <div 
-            className="flex-shrink-0 flex items-center gap-2 cursor-pointer group"
+          <div
+            className="flex-shrink-0 cursor-pointer"
             onClick={() => handleNavClick('home')}
           >
-            <div className="flex flex-col items-end leading-none">
-              <span className="text-3xl font-black tracking-tighter uppercase text-black group-hover:text-gray-800 transition-colors">TAXI</span>
-              <span className="text-xs tracking-widest uppercase font-bold text-gray-600">Santa Marta</span>
-            </div>
-            <Smartphone className="h-8 w-8 text-black stroke-[2.5]" />
+            <img
+              src="https://i.ibb.co/vCjDmVT2/Logo-web-TSM-200x60-PX-2.png"
+              alt="Taxi Santa Marta"
+              className="h-8 md:h-12 w-auto object-contain filter grayscale"
+            />
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Menu - Swiss International Style */}
+          <div className="hidden md:flex items-center">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`font-medium text-lg transition-colors ${
-                  currentPage === item.id 
-                    ? 'text-yellow-600 font-bold' 
-                    : 'text-gray-900 hover:text-yellow-500'
-                }`}
+                className={`px-6 h-24 border-l-2 border-black font-black uppercase tracking-tighter text-sm transition-all hover:bg-black hover:text-white ${currentPage === item.id
+                    ? 'bg-black text-white'
+                    : 'text-black'
+                  }`}
               >
                 {item.label}
               </button>
             ))}
-            <button className="bg-[#FFD700] hover:bg-yellow-400 text-black font-bold py-2.5 px-6 rounded-full transition-colors shadow-sm">
-              Pedir Taxi
+
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="px-6 h-24 border-l-2 border-black font-black uppercase text-xs flex flex-col items-center justify-center hover:bg-gray-100"
+            >
+              <Globe className="w-4 h-4 mb-1" />
+              <span>{language === 'es' ? 'English' : 'Español'}</span>
             </button>
+
+            <a
+              href="https://wa.me/573182000081"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 h-24 border-l-2 border-black bg-[#FFD700] flex items-center justify-center font-black uppercase tracking-widest text-sm hover:bg-yellow-400"
+            >
+              {t.nav.orderTaxi}
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center h-full">
+            <button
+              onClick={toggleLanguage}
+              className="px-4 h-16 border-l-2 border-black font-black text-xs uppercase"
+            >
+              {language === 'es' ? 'EN' : 'ES'}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-900 hover:text-gray-600 focus:outline-none p-2"
+              className="px-4 h-16 border-l-2 border-black text-black"
             >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+              {isOpen ? <X size={24} strokeWidth={3} /> : <Menu size={24} strokeWidth={3} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown - Radical Swiss Design */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-          <div className="px-4 pt-2 pb-6 space-y-2">
+        <div className="md:hidden bg-white border-t-2 border-black fixed inset-0 top-[66px] z-50">
+          <div className="flex flex-col h-full bg-white">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`block w-full text-left px-3 py-3 text-base font-medium rounded-md ${
-                   currentPage === item.id 
-                    ? 'bg-yellow-50 text-yellow-800' 
-                    : 'text-gray-900 hover:bg-gray-50'
-                }`}
+                className={`w-full text-left p-8 border-b-2 border-black text-4xl font-black uppercase tracking-tighter leading-none ${currentPage === item.id ? 'bg-black text-white' : 'text-black'
+                  }`}
               >
                 {item.label}
               </button>
             ))}
-            <div className="pt-4">
-              <button className="w-full bg-[#FFD700] hover:bg-yellow-400 text-black font-bold py-3 rounded-full transition-colors">
-                Pedir Taxi
-              </button>
+            <div className="mt-auto">
+              <a
+                href="https://wa.me/573182000081"
+                className="block w-full text-center bg-[#FFD700] p-10 text-2xl font-black uppercase border-t-2 border-black"
+              >
+                {t.nav.orderTaxi}
+              </a>
             </div>
           </div>
         </div>
