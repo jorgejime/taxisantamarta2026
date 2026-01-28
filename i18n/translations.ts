@@ -63,27 +63,32 @@ export const translations = {
         },
         // Rates
         rates: {
-            title: 'Tarifas Oficiales',
-            subtitle: 'Precios transparentes y regulados para 2024. Sin sorpresas.',
-            tableRoute: 'Ruta / Servicio',
+            title: 'Tarifas Oficiales 2026',
+            subtitle: 'Basado en el Decreto No. 235 de enero de 2026.',
+            tableRoute: 'Concepto / Destino',
             tableType: 'Tipo',
-            tablePrice: 'Valor Aproximado',
-            note: '* Tarifas sujetas a cambios por temporada alta, recargo nocturno (8pm - 5am) y festivos. Para viajes fuera del perímetro urbano, acuerde el precio con el conductor o use el taxímetro.',
-            types: {
-                standard: 'Estándar',
-                tourism: 'Turismo',
-                fullDay: 'Full Day',
-                executive: 'Ejecutivo',
+            tablePrice: 'Valor (COP)',
+            note: 'El decreto establece que para el cobro de estas tarifas el vehículo debe portar la tarjeta de control laminada y vigente. Si no se usa el taxímetro en carreras urbanas, solo se paga la mínima.',
+            concepts: {
+                minimum: 'Carrera Mínima',
+                night: 'Recargo Nocturno (8pm - 5am)',
+                sunday: 'Recargo Dominical y Festivo',
+                airport: 'Recargo Salida Aeropuerto',
+                app: 'Recargo por Llamada o App',
+                hourly: 'Valor Hora Contratada',
             },
             routes: {
-                airportRodadero: 'Aeropuerto - Rodadero',
-                airportCentro: 'Aeropuerto - Centro Histórico',
-                airportTaganga: 'Aeropuerto - Taganga',
-                santaMartaMinca: 'Santa Marta - Minca',
-                santaMartaTayrona: 'Santa Marta - Parque Tayrona',
-                santaMartaPalomino: 'Santa Marta - Palomino',
-                hourlyCity: 'Servicio por Hora (Ciudad)',
+                airportSM: 'Santa Marta ↔ Aeropuerto',
+                airportRodadero: 'Rodadero ↔ Aeropuerto',
+                airportTaganga: 'Taganga ↔ Aeropuerto',
+                smDecameron: 'Santa Marta ↔ Decamerón',
+                smPozos: 'Santa Marta ↔ Pozos Colorados',
+                smMinca: 'Santa Marta ↔ Minca',
+                smTayrona: 'Santa Marta ↔ Parque Tayrona',
+                smBahia: 'Santa Marta ↔ Bahía Concha',
             },
+            sectionOfficial: 'Tabla de Tarifas Oficiales',
+            sectionFixed: 'Tarifas Fijas a Destinos Turísticos',
         },
         // Join Team
         joinTeam: {
@@ -122,22 +127,10 @@ export const translations = {
                 submit: 'Enviar Solicitud',
                 note: 'Nos pondremos en contacto contigo en las próximas 24 horas para agendar la revisión.',
             },
-            whatsappMessage: '🚕 *NUEVA SOLICITUD DE CONDUCTOR*\n\n👤 *Nombre:*\n🆔 *Cédula:*\n📱 *Celular:*\n🚗 *Placa:*\n📅 *Modelo:*\n⏱️ *Experiencia:*',
         },
         // Footer
         footer: {
             rights: 'Todos los derechos reservados.',
-        },
-        // Cookie Consent
-        cookies: {
-            message: 'Este sitio web utiliza cookies para optimizar su experiencia. Al continuar, acepta nuestra',
-            policy: 'Política de Cookies',
-            accept: 'Aceptar',
-            configure: 'Configurar',
-        },
-        // WhatsApp Button
-        whatsapp: {
-            booking: 'WhatsApp Booking',
         },
     },
     en: {
@@ -204,27 +197,32 @@ export const translations = {
         },
         // Rates
         rates: {
-            title: 'Official Rates',
-            subtitle: 'Transparent and regulated prices for 2024. No surprises.',
-            tableRoute: 'Route / Service',
+            title: 'Official Rates 2026',
+            subtitle: 'Based on Decree No. 235 of January 2026.',
+            tableRoute: 'Concept / Destination',
             tableType: 'Type',
-            tablePrice: 'Approximate Price',
-            note: '* Rates subject to change during high season, night surcharge (8pm - 5am) and holidays. For trips outside the urban perimeter, agree on the price with the driver or use the taximeter.',
-            types: {
-                standard: 'Standard',
-                tourism: 'Tourism',
-                fullDay: 'Full Day',
-                executive: 'Executive',
+            tablePrice: 'Value (COP)',
+            note: 'The decree states that to charge these rates, the vehicle must carry a valid laminated control card. If the taximeter is not used for urban rides, only the minimum fare applies.',
+            concepts: {
+                minimum: 'Minimum Fare',
+                night: 'Night Surcharge (8pm - 5am)',
+                sunday: 'Sunday & Holiday Surcharge',
+                airport: 'Airport Exit Surcharge',
+                app: 'App or Call Surcharge',
+                hourly: 'Contracted Hourly Value',
             },
             routes: {
-                airportRodadero: 'Airport - Rodadero',
-                airportCentro: 'Airport - Historic Center',
-                airportTaganga: 'Airport - Taganga',
-                santaMartaMinca: 'Santa Marta - Minca',
-                santaMartaTayrona: 'Santa Marta - Tayrona Park',
-                santaMartaPalomino: 'Santa Marta - Palomino',
-                hourlyCity: 'Hourly Service (City)',
+                airportSM: 'Santa Marta ↔ Airport',
+                airportRodadero: 'Rodadero ↔ Airport',
+                airportTaganga: 'Taganga ↔ Airport',
+                smDecameron: 'Santa Marta ↔ Decameron',
+                smPozos: 'Santa Marta ↔ Pozos Colorados',
+                smMinca: 'Santa Marta ↔ Minca',
+                smTayrona: 'Santa Marta ↔ Tayrona Park',
+                smBahia: 'Santa Marta ↔ Bahia Concha',
             },
+            sectionOfficial: 'Official Rates Table',
+            sectionFixed: 'Fixed Rates to Tourist Destinations',
         },
         // Join Team
         joinTeam: {
@@ -263,22 +261,10 @@ export const translations = {
                 submit: 'Submit Application',
                 note: 'We will contact you within the next 24 hours to schedule the review.',
             },
-            whatsappMessage: '🚕 *NEW DRIVER APPLICATION*\n\n👤 *Name:*\n🆔 *ID:*\n📱 *Phone:*\n🚗 *Plate:*\n📅 *Model:*\n⏱️ *Experience:*',
         },
         // Footer
         footer: {
             rights: 'All rights reserved.',
-        },
-        // Cookie Consent
-        cookies: {
-            message: 'This website uses cookies to optimize your experience. By continuing, you accept our',
-            policy: 'Cookie Policy',
-            accept: 'Accept',
-            configure: 'Configure',
-        },
-        // WhatsApp Button
-        whatsapp: {
-            booking: 'WhatsApp Booking',
         },
     },
 };
