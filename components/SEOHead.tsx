@@ -29,7 +29,7 @@ const seoConfig: SEOConfig = {
 
 const SEOHead: React.FC = () => {
     const { language } = useLanguage();
-    const logoUrl = "https://i.ibb.co/vCjDmVT2/Logo-web-TSM-200x60-PX-2.png";
+    const logoUrl = "https://i.ibb.co/VpH76kcD/3182000081.png";
 
     useEffect(() => {
         const config = seoConfig[language];
