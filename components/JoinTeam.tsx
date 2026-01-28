@@ -21,7 +21,7 @@ const JoinTeam: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const title = language === 'es' ? 'SOLICITUD DE CONDUCTOR' : 'DRIVER APPLICATION';
+    const title = language === 'es' ? 'VINCULACION DE CONDUCTOR' : 'DRIVER APPLICATION';
     const separator = '=======================';
 
     // Form labels based on language
