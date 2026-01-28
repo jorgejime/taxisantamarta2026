@@ -21,8 +21,8 @@ const Services: React.FC = () => {
 
   const getWhatsAppLink = (serviceTitle: string) => {
     const baseMsg = language === 'es'
-      ? `Hola! Me gustaría solicitar el servicio de: *${serviceTitle}*`
-      : `Hello! I would like to request the following service: *${serviceTitle}*`;
+      ? `SOLICITUD DE SERVICIO: *${serviceTitle}*`
+      : `SERVICE REQUEST: *${serviceTitle}*`;
     return `https://wa.me/573003848822?text=${encodeURIComponent(baseMsg)}`;
   };
 

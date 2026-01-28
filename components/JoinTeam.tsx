@@ -21,18 +21,19 @@ const JoinTeam: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const title = language === 'es' ? '*NUEVA SOLICITUD DE CONDUCTOR*' : '*NEW DRIVER APPLICATION*';
-    const separator = '----------------------------------';
+    const title = language === 'es' ? 'SOLICITUD DE CONDUCTOR' : 'DRIVER APPLICATION';
+    const separator = '=======================';
 
     // Form labels based on language
     const lName = language === 'es' ? 'NOMBRE' : 'NAME';
-    const lId = language === 'es' ? 'CÉDULA' : 'ID';
+    const lId = language === 'es' ? 'CEDULA' : 'ID';
     const lPhone = language === 'es' ? 'CELULAR' : 'PHONE';
     const lPlate = language === 'es' ? 'PLACA' : 'PLATE';
     const lModel = language === 'es' ? 'MODELO' : 'MODEL';
     const lExp = language === 'es' ? 'EXPERIENCIA' : 'EXPERIENCE';
 
-    const mensaje = `🚕 ${title}\n${separator}\n✅ *${lName}:* ${formData.nombre.toUpperCase()}\n✅ *${lId}:* ${formData.cedula}\n✅ *${lPhone}:* ${formData.celular}\n✅ *${lPlate}:* ${formData.placa.toUpperCase()}\n✅ *${lModel}:* ${formData.modelo}\n✅ *${lExp}:* ${formData.experiencia}`;
+    // Sin emojis para evitar errores de codificación
+    const mensaje = `*${title}*\n${separator}\n- *${lName}:* ${formData.nombre.toUpperCase()}\n- *${lId}:* ${formData.cedula}\n- *${lPhone}:* ${formData.celular}\n- *${lPlate}:* ${formData.placa.toUpperCase()}\n- *${lModel}:* ${formData.modelo}\n- *${lExp}:* ${formData.experiencia}`;
 
     window.open(`https://wa.me/573003848822?text=${encodeURIComponent(mensaje)}`, '_blank');
   };
