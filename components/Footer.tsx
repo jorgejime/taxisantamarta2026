@@ -3,7 +3,7 @@ import { Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '../i18n';
 
 const Footer: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <footer className="bg-gray-900 text-white py-8 sm:py-10 md:py-12 pb-28 sm:pb-32 md:pb-12">
@@ -54,8 +54,14 @@ const Footer: React.FC = () => {
             </a>
           </div>
         </div>
-        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-800 text-center text-xs sm:text-sm text-gray-500">
-          © {new Date().getFullYear()} Taxi Santa Marta. {t.footer.rights}
+        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-800 text-center text-xs sm:text-sm text-gray-500 flex flex-col gap-2">
+          <span>© {new Date().getFullYear()} Taxi Santa Marta. {t.footer.rights}</span>
+          <span>
+            {language === 'es' ? 'Esta web fue desarrollada en Santa Marta por ' : 'This website was developed in Santa Marta by '}
+            <a href="https://www.centroeidea.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFD700] transition-colors font-bold">
+              www.centroeidea.com
+            </a>
+          </span>
         </div>
       </div>
     </footer>
