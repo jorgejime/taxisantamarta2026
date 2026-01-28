@@ -30,7 +30,7 @@ const JoinTeam: React.FC = () => {
     const title = language === 'es' ? '🚕 *NUEVA SOLICITUD DE CONDUCTOR*' : '🚕 *NEW DRIVER APPLICATION*';
 
     const mensaje = `${title}\n\n👤 *${labelName}:* ${formData.nombre}\n🆔 *${labelId}:* ${formData.cedula}\n📱 *${labelPhone}:* ${formData.celular}\n🚗 *${labelPlate}:* ${formData.placa}\n📅 *${labelModel}:* ${formData.modelo}\n⏱️ *${labelExp}:* ${formData.experiencia}`;
-    window.open(`https://wa.me/573184131391?text=${encodeURIComponent(mensaje)}`, '_blank');
+    window.open(`https://wa.me/573003848822?text=${encodeURIComponent(mensaje)}`, '_blank');
   };
 
   return (

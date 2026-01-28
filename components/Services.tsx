@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plane, Briefcase, Camera, Clock, UserCheck, Shield } from 'lucide-react';
+import { Plane, Briefcase, Camera, Clock, UserCheck, Shield, Car } from 'lucide-react';
 import { useLanguage } from '../i18n';
 
 interface ServiceItem {
@@ -17,7 +17,14 @@ const servicesList: ServiceItem[] = [
 ];
 
 const Services: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const getWhatsAppLink = (serviceTitle: string) => {
+    const baseMsg = language === 'es'
+      ? `Hola! Me gustaría solicitar el servicio de: *${serviceTitle}*`
+      : `Hello! I would like to request the following service: *${serviceTitle}*`;
+    return `https://wa.me/573003848822?text=${encodeURIComponent(baseMsg)}`;
+  };
 
   return (
     <div className="bg-[#1A1A1B] text-white border-b-2 border-black">
@@ -37,7 +44,7 @@ const Services: React.FC = () => {
             return (
               <div
                 key={index}
-                className="p-10 md:p-12 border-black border-b-2 sm:odd:border-r-2 lg:odd:border-r-0 lg:[&:not(:nth-child(3n))]:border-r-2 hover:bg-[#FFD700] hover:text-black transition-all group cursor-default"
+                className="p-10 md:p-12 border-black border-b-2 sm:odd:border-r-2 lg:odd:border-r-0 lg:[&:not(:nth-child(3n))]:border-r-2 hover:bg-[#FFD700] hover:text-black transition-all group flex flex-col h-full"
               >
                 <div className="flex justify-between items-start mb-12">
                   <div className="p-3 bg-white text-black font-black text-xl">
@@ -50,9 +57,19 @@ const Services: React.FC = () => {
                   {serviceData.title}
                 </h3>
 
-                <p className="text-sm font-medium uppercase tracking-tight opacity-60 group-hover:opacity-100 leading-tight">
+                <p className="text-sm font-medium uppercase tracking-tight opacity-60 group-hover:opacity-100 leading-tight mb-8 grow">
                   {serviceData.desc}
                 </p>
+
+                <a
+                  href={getWhatsAppLink(serviceData.title)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center justify-between border-2 border-white group-hover:border-black p-4 font-black uppercase tracking-tighter text-sm hover:bg-black hover:text-white transition-all transform hover:-translate-y-1"
+                >
+                  <span>{language === 'es' ? 'Solicitar ahora' : 'Request now'}</span>
+                  <Car className="w-5 h-5 ml-2" />
+                </a>
               </div>
             );
           })}
