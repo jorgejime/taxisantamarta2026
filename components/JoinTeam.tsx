@@ -21,15 +21,19 @@ const JoinTeam: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const labelName = language === 'es' ? 'Nombre' : 'Name';
-    const labelId = language === 'es' ? 'Cédula' : 'ID';
-    const labelPhone = language === 'es' ? 'Celular' : 'Phone';
-    const labelPlate = language === 'es' ? 'Placa' : 'Plate';
-    const labelModel = language === 'es' ? 'Modelo' : 'Model';
-    const labelExp = language === 'es' ? 'Experiencia' : 'Experience';
-    const title = language === 'es' ? '🚕 *NUEVA SOLICITUD DE CONDUCTOR*' : '🚕 *NEW DRIVER APPLICATION*';
+    const title = language === 'es' ? '*NUEVA SOLICITUD DE CONDUCTOR*' : '*NEW DRIVER APPLICATION*';
+    const separator = '----------------------------------';
 
-    const mensaje = `${title}\n\n👤 *${labelName}:* ${formData.nombre}\n🆔 *${labelId}:* ${formData.cedula}\n📱 *${labelPhone}:* ${formData.celular}\n🚗 *${labelPlate}:* ${formData.placa}\n📅 *${labelModel}:* ${formData.modelo}\n⏱️ *${labelExp}:* ${formData.experiencia}`;
+    // Form labels based on language
+    const lName = language === 'es' ? 'NOMBRE' : 'NAME';
+    const lId = language === 'es' ? 'CÉDULA' : 'ID';
+    const lPhone = language === 'es' ? 'CELULAR' : 'PHONE';
+    const lPlate = language === 'es' ? 'PLACA' : 'PLATE';
+    const lModel = language === 'es' ? 'MODELO' : 'MODEL';
+    const lExp = language === 'es' ? 'EXPERIENCIA' : 'EXPERIENCE';
+
+    const mensaje = `🚕 ${title}\n${separator}\n✅ *${lName}:* ${formData.nombre.toUpperCase()}\n✅ *${lId}:* ${formData.cedula}\n✅ *${lPhone}:* ${formData.celular}\n✅ *${lPlate}:* ${formData.placa.toUpperCase()}\n✅ *${lModel}:* ${formData.modelo}\n✅ *${lExp}:* ${formData.experiencia}`;
+
     window.open(`https://wa.me/573003848822?text=${encodeURIComponent(mensaje)}`, '_blank');
   };
 
