@@ -58,8 +58,8 @@ const Footer: React.FC = () => {
           <span>© {new Date().getFullYear()} Taxi Santa Marta. {t.footer.rights}</span>
           <span>
             {language === 'es' ? 'Esta web fue desarrollada en Santa Marta por ' : 'This website was developed in Santa Marta by '}
-            <a href="https://www.centroeidea.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFD700] transition-colors font-bold">
-              www.centroeidea.com
+            <a href="https://centroeidea.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFD700] transition-colors font-bold">
+              centroeidea.com
             </a>
           </span>
         </div>
