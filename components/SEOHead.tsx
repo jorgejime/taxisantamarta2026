@@ -16,19 +16,20 @@ interface SEOConfig {
 
 const seoConfig: SEOConfig = {
     es: {
-        title: 'Taxi Santa Marta | Transporte Confiable, Turismo y Traslados Aeropuerto',
-        description: 'Servicio de taxi seguro y confiable en Santa Marta, Colombia. Traslados al aeropuerto, tours a Tayrona, Minca, Taganga. Conductores verificados, tarifas fijas. Reserva por WhatsApp.',
+        title: 'Taxi Santa Marta | Transporte Confiable y Turismo',
+        description: 'Servicio de taxi seguro 24/7 en Santa Marta. Traslados aeropuerto, tours turísticos, Minca, Tayrona y más. ¡Reserva por WhatsApp!',
         keywords: 'taxi santa marta, transporte santa marta, taxi aeropuerto santa marta, tour tayrona, taxi minca, taxi taganga, transporte turistico santa marta, taxi colombia',
     },
     en: {
-        title: 'Taxi Santa Marta | Reliable Transportation, Tourism & Airport Transfers',
-        description: 'Safe and reliable taxi service in Santa Marta, Colombia. Airport transfers, tours to Tayrona, Minca, Taganga. Verified drivers, fixed rates. Book via WhatsApp.',
+        title: 'Taxi Santa Marta | Reliable Transportation & Tourism',
+        description: 'Safe 24/7 taxi service in Santa Marta. Airport transfers, sightseeing tours, Minca, Tayrona and more. Book via WhatsApp!',
         keywords: 'taxi santa marta, santa marta transportation, airport taxi santa marta, tayrona tour, minca taxi, taganga taxi, tourist transport santa marta, colombia taxi',
     },
 };
 
 const SEOHead: React.FC = () => {
     const { language } = useLanguage();
+    const logoUrl = "https://i.ibb.co/vCjDmVT2/Logo-web-TSM-200x60-PX-2.png";
 
     useEffect(() => {
         const config = seoConfig[language];
@@ -68,6 +69,11 @@ const SEOHead: React.FC = () => {
             ogDescription.setAttribute('content', config.description);
         }
 
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        if (ogImage) {
+            ogImage.setAttribute('content', logoUrl);
+        }
+
         const ogLocale = document.querySelector('meta[property="og:locale"]');
         if (ogLocale) {
             ogLocale.setAttribute('content', language === 'es' ? 'es_CO' : 'en_US');
@@ -82,6 +88,11 @@ const SEOHead: React.FC = () => {
         const twitterDescription = document.querySelector('meta[name="twitter:description"]');
         if (twitterDescription) {
             twitterDescription.setAttribute('content', config.description);
+        }
+
+        const twitterImage = document.querySelector('meta[name="twitter:image"]');
+        if (twitterImage) {
+            twitterImage.setAttribute('content', logoUrl);
         }
 
     }, [language]);
