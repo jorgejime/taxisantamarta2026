@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
     <div className="relative w-full h-[600px] md:h-[700px] bg-gray-900 overflow-hidden">
       {/* Background Image - Using a placeholder similar to a colonial street in Colombia */}
       <img
-        src="https://www.hotelsuiteboutiqueelcactus.com/wp-content/uploads/2021/04/centro-historico-de-santa-marta.jpg"
+        src="https://i.ibb.co/DDC69Njt/Gemini-Generated-Image-1ii1lj1ii1lj1ii1.png"
         alt="Taxi on Santa Marta street"
         className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
       />
