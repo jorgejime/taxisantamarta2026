@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
 
             <div className="flex flex-col gap-4">
               <a
-                href="https://wa.me/573182000081"
+                href="https://wa.me/573164207000"
                 className="group inline-flex items-center justify-between bg-black text-white p-6 md:p-8 text-xl md:text-3xl font-black uppercase tracking-tighter hover:bg-[#FFD700] hover:text-black transition-all"
               >
                 <span>{t.hero.bookWhatsApp}</span>

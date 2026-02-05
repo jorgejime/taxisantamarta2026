@@ -52,8 +52,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
                 className={`px-6 h-24 border-l-2 border-black font-black uppercase tracking-tighter text-sm transition-all hover:bg-black hover:text-white ${currentPage === item.id
-                    ? 'bg-black text-white'
-                    : 'text-black'
+                  ? 'bg-black text-white'
+                  : 'text-black'
                   }`}
               >
                 {item.label}
@@ -70,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             </button>
 
             <a
-              href="https://wa.me/573182000081"
+              href="https://wa.me/573164207000"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 h-24 border-l-2 border-black bg-[#FFD700] flex items-center justify-center font-black uppercase tracking-widest text-sm hover:bg-yellow-400"
@@ -98,31 +98,33 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       </div>
 
       {/* Mobile Menu Dropdown - Radical Swiss Design */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t-2 border-black fixed inset-0 top-[66px] z-50">
-          <div className="flex flex-col h-full bg-white">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`w-full text-left p-8 border-b-2 border-black text-4xl font-black uppercase tracking-tighter leading-none ${currentPage === item.id ? 'bg-black text-white' : 'text-black'
-                  }`}
-              >
-                {item.label}
-              </button>
-            ))}
-            <div className="mt-auto">
-              <a
-                href="https://wa.me/573182000081"
-                className="block w-full text-center bg-[#FFD700] p-10 text-2xl font-black uppercase border-t-2 border-black"
-              >
-                {t.nav.orderTaxi}
-              </a>
+      {
+        isOpen && (
+          <div className="md:hidden bg-white border-t-2 border-black fixed inset-0 top-[66px] z-50">
+            <div className="flex flex-col h-full bg-white">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`w-full text-left p-8 border-b-2 border-black text-4xl font-black uppercase tracking-tighter leading-none ${currentPage === item.id ? 'bg-black text-white' : 'text-black'
+                    }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+              <div className="mt-auto">
+                <a
+                  href="https://wa.me/573164207000"
+                  className="block w-full text-center bg-[#FFD700] p-10 text-2xl font-black uppercase border-t-2 border-black"
+                >
+                  {t.nav.orderTaxi}
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </nav>
+        )
+      }
+    </nav >
   );
 };
 

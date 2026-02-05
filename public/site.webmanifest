@@ -43,7 +43,7 @@
             "name": "Pedir Taxi",
             "short_name": "Taxi",
             "description": "Reservar un taxi ahora",
-            "url": "https://wa.me/573182000081?text=Hola,%20necesito%20un%20taxi",
+            "url": "https://wa.me/573164207000?text=Hola,%20necesito%20un%20taxi",
             "icons": [
                 {
                     "src": "/shortcut-taxi.png",

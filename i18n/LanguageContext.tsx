@@ -14,7 +14,16 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-    const [language, setLanguage] = useState<Language>('es');
+    const [language, setLanguage] = useState<Language>(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const langParam = params.get('lang');
+            if (langParam === 'en' || langParam === 'es') {
+                return langParam as Language;
+            }
+        }
+        return 'es';
+    });
 
     const value: LanguageContextType = {
         language,
